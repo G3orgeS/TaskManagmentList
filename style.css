@@ -1,0 +1,159 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	color: rgb(255, 255, 255);
+	background-color: rgb(30, 50, 70);
+}
+header {
+	padding: 20px 10px;
+	width: 100%;
+}
+header h1{ 
+	color: rgb(105, 115, 130);
+	margin-bottom: 10px;
+}
+
+#form {
+	display: flex;
+}
+input, button {
+	border: solid gray;
+	background: none; 
+}
+#input {
+	width: 100%;
+	background-color: rgb(40, 50, 65);
+	padding: 10px;
+	border-radius: 10px;
+	margin-right: 20px;
+	color: rgb(255, 255, 255);
+	font-size: 20px;
+}
+#input::placeholder {
+	color: rgb(105, 115, 130);
+}
+#new-task-submit {
+	color: rgb(255, 255, 255);
+	font-size: 20px;
+  background-color: rgb(40, 110, 45);
+	cursor: pointer;
+    border-radius: 10px;
+}
+#new-task-submit:hover {
+	opacity: 0.5;
+}
+#new-task-submit:active {
+	opacity: 0.5;
+}
+.task-list {
+    flex: 100%;
+	width: 100%;
+	margin: 0 auto;
+}
+.task-list h2 {
+	color: rgb(105, 115, 130);
+	margin-bottom: 10px;
+}
+
+#tasks .task {
+	display: flex;
+	justify-content: space-between;
+	background-color: rgb(30, 40, 55);;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+    border-radius: 10px;
+}
+.task .content {
+	flex: 100%;
+}
+.task .content .text {
+	color: rgb(255, 255, 255);
+  	font-size: 15px;
+	width: 100%;
+	display: block;
+}
+.task .content .text:not(:read-only) {
+  color: white;
+}
+.task .actions {
+	display: flex;
+}
+.task .actions button {
+	cursor: pointer;
+	margin: 0 0.5rem;
+	font-size: 1.125rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.task .actions button:hover {
+	opacity: 0.8;
+}
+.task .actions button:active {
+	opacity: 0.6;
+}
+.task .actions .edit {
+  background-color: rgb(150, 140, 55);
+  color: black;
+  border-radius: 10px;
+}
+.task .actions .delete {
+  background-color: rgb(120, 25, 45);
+  color: black;
+  border-radius: 10px;
+}
+.task .actions .done {
+  background-color: rgb(40, 110, 45);
+  color: black;
+  border-radius: 10px;
+}
+
+.active {
+    text-decoration: line-through;
+  }
+
+.fixa{
+	margin-top: -20px;
+	height: auto;
+	padding: 10px;
+    flex: 100%;
+    width: 100%;
+}
+  .complaintText{
+	height: 50px;
+	background-color: rgb(30, 40, 55);
+    border-radius: 10px;
+	padding: 10px;
+	margin: 10px -10px 10px -10px;
+	display: flex;
+	justify-content: space-between;
+  }
+  .textstyle{
+	color: rgb(255, 255, 255);
+    font-size: 15px;
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+  }
+.edit {
+	background-color: rgb(150, 140, 55);
+	color: black;
+	border-radius: 10px;
+  }
+.delete {
+	background-color: rgb(120, 25, 45);
+	color: black;
+	border-radius: 10px;
+  }
+.done {
+	background-color: rgb(40, 110, 45);
+	color: black;
+	border-radius: 10px;
+  }
