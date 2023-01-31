@@ -4,14 +4,17 @@ const form = document.querySelector("#form");
 const input = document.querySelector("#input");
 const list = document.querySelector("#tasks");
 const output = document.querySelector('#output');
+const modalB = document.querySelector('#modal')
+const closeModal = document.querySelector('#closeModal');
 let todos = []
 
+//  Hämtar ärend
 fetch(BASE_URL + '?_limit=7') // '?_limit=7' limit är 7
     .then(res => {
         return res.json();
 })
     .then(data =>{
-        console.log(data);
+        // console.log(data);
             todos = data
                 todos.forEach(todo => {
                     byggEttElement(todo)
@@ -23,7 +26,9 @@ fetch(BASE_URL + '?_limit=7') // '?_limit=7' limit är 7
 form.addEventListener('submit', (e) => {
     e.preventDefault();
         const textVärdet = input.value.trim();
- 
+            const error = document.querySelector(".error");
+                error.textContent = "";
+//  Post 
 fetch(BASE_URL, {
     method: 'POST',
     body: JSON.stringify({
@@ -33,47 +38,47 @@ fetch(BASE_URL, {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-})
+}) // om det inte är något textvärde så kommer felmeddelande. 
     .then((response) => response.json())
         .then((data) => {
             if (textVärdet === '') {
-                alert('det går inte')
-                return
-
-
+                    error.textContent = "Fyll i något du behöver göra";
+                return;
             } else {
             // console.log(textVärdet)
             byggEttElement(data)
         }
     });
 });
-
+// fabrik
 const byggEttElement = (data) => {
     const task = document.createElement('div');
-	task.classList.add('task');
-const taskChild = document.createElement('div');
-	taskChild.classList.add('content');
-        task.appendChild(taskChild);
-const inputadeVärdet = document.createElement('input');
-	inputadeVärdet.classList.add('text');
-    inputadeVärdet.classList.remove('active') // lägger till klassen text-to-cross 
-	inputadeVärdet.type = 'text';
-	inputadeVärdet.value = data.title;
-		inputadeVärdet.setAttribute('readonly', 'readonly');
+	    task.classList.add('task');
+    const taskChild = document.createElement('div');
+	    taskChild.classList.add('content');
+            task.appendChild(taskChild);
+    const inputadeVärdet = document.createElement('input');
+	    inputadeVärdet.classList.add('text');
+        inputadeVärdet.classList.remove('active')  
+	    inputadeVärdet.type = 'text';
+	    inputadeVärdet.value = data.title;
+	    inputadeVärdet.setAttribute('readonly', 'readonly');
             taskChild.appendChild(inputadeVärdet);
-
-// Knappfabriken, bygger div och 3 knappar med klass
+// Knappfabriken
 const kroppen = document.createElement('div');
 	kroppen.classList.add('actions');
-        const actionEdit = document.createElement('button');
-	        actionEdit.classList.add('edit');
-	        actionEdit.innerText = 'Edit';
-        const actionDelete = document.createElement('button');
-	        actionDelete.classList.add('delete');
-	        actionDelete.innerText = 'Delete'; 
-        const actionDone = document.createElement('button');
-	        actionDone.classList.add('done');
-	        actionDone.innerText = 'Done'; 
+const actionEdit = document.createElement('button');
+	actionEdit.classList.add('edit');
+	    actionEdit.innerText = 'Edit';
+const actionDelete = document.createElement('button');
+	actionDelete.classList.add('delete');
+	    actionDelete.innerText = 'Delete'; 
+const actionDone = document.createElement('button');
+if (data.completed) {
+        inputadeVärdet.classList.add('active');
+}
+	actionDone.classList.add('done');
+	    actionDone.innerText = 'Done'; 
 
 kroppen.appendChild(actionDone);
 kroppen.appendChild(actionEdit);
@@ -95,8 +100,12 @@ actionEdit.addEventListener('click', (e) => {
 	}
 }); 
 // radera task (förälder)
-actionDelete.addEventListener('click', (e) => {
 
+// lägg till if 
+// (!todo.completed)
+// e.stopPropegation()
+
+actionDelete.addEventListener('click', (e) => {    
     // fetch funktion och raderar till länken 
     fetch(BASE_URL + '/' + data.id, {
         method: 'DELETE'
@@ -108,7 +117,8 @@ actionDelete.addEventListener('click', (e) => {
         }
     })
 });
-// strycker över grejer som är gjorda 
+
+// Markerar färdiga 
 actionDone.addEventListener("click", (e) => {
     if (inputadeVärdet.classList.contains('active')) {
         actionDone.innerText = 'done'; 
@@ -118,4 +128,9 @@ actionDone.addEventListener("click", (e) => {
         actionDone.innerText = 'ångra'; 
     }
 });
+
+// closeModal.addEventListener('click', (e) => {
+//     modalB.classList.add('modalhide')
+// })
+
 };

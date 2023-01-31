@@ -15,11 +15,20 @@
             <input id="input" name="username" type="text" placeholder="Vad behöver du göra?"/>
             <input id="new-task-submit" type="submit" value="Push the button"/>
         </form>
+        <p class="error"></p>
 </header>
 
 <section class="task-list">
     <div id="tasks"></div>
 </section>
+
+<div id="modal">
+    <div class="modal-content">
+      <p class="textStyle">Du måste markera den som färdig först</p>
+      <button id="closeModal">Stäng</button>
+    </div>
+</div>
+
 
 <script src="script.js"></script>
 </body>

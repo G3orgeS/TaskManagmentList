@@ -1,8 +1,8 @@
 * {
 	margin: 0;
 	box-sizing: border-box;
-    padding-left: 20px;
-    padding-right: 20px;
+	/* padding-left: 20px; */
+    /* padding-right: 20px; */
 }
 body {
 	display: flex;
@@ -12,7 +12,7 @@ body {
 	background-color: rgb(30, 50, 70);
 }
 header {
-	padding: 20px 10px;
+	padding: 20px 100px 10px;
 	width: 100%;
 }
 header h1{ 
@@ -42,7 +42,7 @@ input, button {
 #new-task-submit {
 	color: rgb(255, 255, 255);
 	font-size: 20px;
-  background-color: rgb(40, 110, 45);
+  	background-color: rgb(40, 110, 45);
 	cursor: pointer;
     border-radius: 10px;
 }
@@ -56,6 +56,7 @@ input, button {
     flex: 100%;
 	width: 100%;
 	margin: 0 auto;
+	padding: 0px 100px 0px;
 }
 .task-list h2 {
 	color: rgb(105, 115, 130);
@@ -157,3 +158,59 @@ input, button {
 	color: black;
 	border-radius: 10px;
   }
+
+.error {
+	height: 30px;
+	margin-top: 10px;
+	color:  rgb(255, 255, 255);
+}
+
+#modal {
+	background-color: rgba(255,255,255,0.2);
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	width: 200vw;
+	height: 200vh;
+	z-index: 10;
+	display: none; 
+	
+  }
+.modal.active {
+	display: flex;
+}
+.modal-content {
+	background-color: rgb(30, 50, 70);
+	height: 150px;
+	width: 400px;
+	position: fixed;
+	top: 30%;
+	left: 35%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	border-radius: 10px;
+	border: 2px solid red;
+}
+#closeModal {
+	color: white;
+	background-color: rgb(40, 110, 45);
+	width: 100px;
+	border-radius: 10px;
+	height: 30px;
+	font-size: 20px;
+	cursor: pointer;
+}
+#closeModal:hover {
+	opacity: 0.5;
+}
+.textStyle{
+	font-size: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.modalhide{
+	display: none;
+}
