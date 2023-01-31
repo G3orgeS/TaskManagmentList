@@ -7,17 +7,17 @@ const output = document.querySelector('#output');
 const modalB = document.querySelector('#modal')
 const closeModal = document.querySelector('#closeModal');
 let todos = []
-
 //  Hämtar ärend
+modalB.classList.add('modalhide') 
 fetch(BASE_URL + '?_limit=7') // '?_limit=7' limit är 7
-    .then(res => {
-        return res.json();
+.then(res => {
+    return res.json();
 })
-    .then(data =>{
-        // console.log(data);
-            todos = data
-                todos.forEach(todo => {
-                    byggEttElement(todo)
+.then(data =>{
+    // console.log(data);
+    todos = data
+    todos.forEach(todo => {
+        byggEttElement(todo)
     });
 }) 
 .catch(error => console.log(error))
@@ -101,11 +101,13 @@ actionEdit.addEventListener('click', (e) => {
 }); 
 // radera task (förälder)
 
-// lägg till if 
-// (!todo.completed)
-// e.stopPropegation()
-
-actionDelete.addEventListener('click', (e) => {    
+actionDelete.addEventListener('click', (e) => {  
+    if (inputadeVärdet.classList.contains('active')) {
+        modalB.classList.add('modalhide') 
+    } else {
+        modalB.classList.remove('modalhide')
+        return  
+}  
     // fetch funktion och raderar till länken 
     fetch(BASE_URL + '/' + data.id, {
         method: 'DELETE'
@@ -129,8 +131,8 @@ actionDone.addEventListener("click", (e) => {
     }
 });
 
-// closeModal.addEventListener('click', (e) => {
-//     modalB.classList.add('modalhide')
-// })
+closeModal.addEventListener('click', (e) => {
+    modalB.classList.add('modalhide')
+})
 
 };

@@ -173,7 +173,7 @@ input, button {
 	width: 200vw;
 	height: 200vh;
 	z-index: 10;
-	display: none; 
+	/* display: none;  */
 	
   }
 .modal.active {
@@ -191,7 +191,8 @@ input, button {
 	justify-content: space-evenly;
 	align-items: center;
 	border-radius: 10px;
-	border: 2px solid red;
+	border: solid gray;
+	/* border: 2px solid red; */
 }
 #closeModal {
 	color: white;
