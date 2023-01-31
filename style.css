@@ -1,8 +1,6 @@
 * {
 	margin: 0;
 	box-sizing: border-box;
-	/* padding-left: 20px; */
-    /* padding-right: 20px; */
 }
 body {
 	display: flex;
@@ -19,7 +17,6 @@ header h1{
 	color: rgb(105, 115, 130);
 	margin-bottom: 10px;
 }
-
 #form {
 	display: flex;
 }
@@ -47,7 +44,7 @@ input, button {
     border-radius: 10px;
 }
 #new-task-submit:hover {
-	opacity: 0.5;
+	opacity: 0.7;
 }
 #new-task-submit:active {
 	opacity: 0.5;
@@ -62,7 +59,6 @@ input, button {
 	color: rgb(105, 115, 130);
 	margin-bottom: 10px;
 }
-
 #tasks .task {
 	display: flex;
 	justify-content: space-between;
@@ -81,9 +77,9 @@ input, button {
 	width: 100%;
 	display: block;
 }
-.task .content .text:not(:read-only) {
+/* .task .content .text:not(:read-only) {
   color: white;
-}
+} */
 .task .actions {
 	display: flex;
 }
@@ -115,11 +111,9 @@ input, button {
   color: black;
   border-radius: 10px;
 }
-
 .active {
     text-decoration: line-through;
-  }
-
+}
 .fixa{
 	margin-top: -20px;
 	height: auto;
@@ -164,7 +158,6 @@ input, button {
 	margin-top: 10px;
 	color:  rgb(255, 255, 255);
 }
-
 #modal {
 	background-color: rgba(255,255,255,0.2);
 	position: fixed;
@@ -174,8 +167,7 @@ input, button {
 	height: 200vh;
 	z-index: 10;
 	/* display: none;  */
-	
-  }
+}
 .modal.active {
 	display: flex;
 }
@@ -211,7 +203,6 @@ input, button {
 	padding-left: 20px;
 	padding-right: 20px;
 }
-
 .modalhide{
 	display: none;
 }

@@ -6,9 +6,10 @@ const list = document.querySelector("#tasks");
 const output = document.querySelector('#output');
 const modalB = document.querySelector('#modal')
 const closeModal = document.querySelector('#closeModal');
-let todos = []
-//  Hämtar ärend
 modalB.classList.add('modalhide') 
+let todos = []
+
+//  Hämtar ärend
 fetch(BASE_URL + '?_limit=7') // '?_limit=7' limit är 7
 .then(res => {
     return res.json();
@@ -57,13 +58,13 @@ const byggEttElement = (data) => {
     const taskChild = document.createElement('div');
 	    taskChild.classList.add('content');
             task.appendChild(taskChild);
-    const inputadeVärdet = document.createElement('input');
-	    inputadeVärdet.classList.add('text');
-        inputadeVärdet.classList.remove('active')  
-	    inputadeVärdet.type = 'text';
-	    inputadeVärdet.value = data.title;
-	    inputadeVärdet.setAttribute('readonly', 'readonly');
-            taskChild.appendChild(inputadeVärdet);
+    const inputValue = document.createElement('input');
+	    inputValue.classList.add('text');
+        inputValue.classList.remove('active')  
+	    inputValue.type = 'text';
+	    inputValue.value = data.title;
+	    inputValue.setAttribute('readonly', 'readonly');
+            taskChild.appendChild(inputValue);
 // Knappfabriken
 const kroppen = document.createElement('div');
 	kroppen.classList.add('actions');
@@ -75,7 +76,7 @@ const actionDelete = document.createElement('button');
 	    actionDelete.innerText = 'Delete'; 
 const actionDone = document.createElement('button');
 if (data.completed) {
-        inputadeVärdet.classList.add('active');
+        inputValue.classList.add('active');
 }
 	actionDone.classList.add('done');
 	    actionDone.innerText = 'Done'; 
@@ -92,17 +93,17 @@ input.value = '';
 actionEdit.addEventListener('click', (e) => {
 	if (actionEdit.innerText.toLowerCase() == "edit") {
 		actionEdit.innerText = "Save";
-		inputadeVärdet.removeAttribute("readonly");
-		inputadeVärdet.focus();
+		inputValue.removeAttribute("readonly");
+		inputValue.focus();
 	} else {
 		actionEdit.innerText = "Edit";
-		inputadeVärdet.setAttribute("readonly", "readonly");
+		inputValue.setAttribute("readonly", "readonly");
 	}
 }); 
 // radera task (förälder)
 
 actionDelete.addEventListener('click', (e) => {  
-    if (inputadeVärdet.classList.contains('active')) {
+    if (inputValue.classList.contains('active')) {
         modalB.classList.add('modalhide') 
     } else {
         modalB.classList.remove('modalhide')
@@ -122,11 +123,11 @@ actionDelete.addEventListener('click', (e) => {
 
 // Markerar färdiga 
 actionDone.addEventListener("click", (e) => {
-    if (inputadeVärdet.classList.contains('active')) {
+    if (inputValue.classList.contains('active')) {
         actionDone.innerText = 'done'; 
-        inputadeVärdet.classList.remove('active');
+        inputValue.classList.remove('active');
     } else {
-        inputadeVärdet.classList.add('active');
+        inputValue.classList.add('active');
         actionDone.innerText = 'ångra'; 
     }
 });
@@ -134,5 +135,4 @@ actionDone.addEventListener("click", (e) => {
 closeModal.addEventListener('click', (e) => {
     modalB.classList.add('modalhide')
 })
-
 };
